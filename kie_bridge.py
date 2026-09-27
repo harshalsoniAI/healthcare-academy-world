@@ -5,7 +5,7 @@ import argparse
 import sys
 import json
 
-API_KEY = "02d36ea60cc58dd252b6d105759ffefe"
+API_KEY = os.environ.get("KIE_API_KEY", "")
 MARKET_URL = "https://api.kie.ai"
 STORAGE_URL = "https://kiei.redpandaai.co"
 

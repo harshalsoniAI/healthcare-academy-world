@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+.env*
+.vercel/
+__pycache__/
+*.py
+*.sh
+prompts.md
+
+# Superseded concept art that is no longer referenced by the website.
+assets/entrance.webp
+assets/simlab.webp
+assets/hybrid.webp
+assets/clinical.webp
+assets/graduation.webp
+assets/hero.webp

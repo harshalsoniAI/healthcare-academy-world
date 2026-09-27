@@ -3,103 +3,265 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>The Canadian Health Academy — Experience the Future of Learning</title>
-  <meta name="description" content="Fly through the immersive world of The Canadian Health Academy." />
+  <title>The Canadian Health Academy | Holistic Wellness Training</title>
+  <meta name="description" content="Hands-on certification and continuing education in Manual Lymphatic Drainage, dry cupping, hot stone therapy, Gua Sha, and head massage." />
+  <link rel="icon" href="assets/cha-logo.png" />
   <style>
     :root, .sw-root {
-      --sw-bg: #FFFFFF;          /* Match generated scene background */
-      --sw-ink: #004A99;         /* Deep Trust Blue */
-      --sw-ink-soft: #B0BEC5;   /* Professional Slate */
-      --sw-accent: #004A99;      /* Primary Accent */
+      --sw-bg: #f7f4ef;
+      --sw-ink: #171717;
+      --sw-ink-soft: #625f5a;
+      --sw-accent: #d40000;
     }
-    body { margin: 0; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f7f4ef; color: #171717; }
+    *, *::before, *::after { box-sizing: border-box; }
+    .site-content {
+      position: relative;
+      z-index: 45;
+      background: #fff;
+      box-shadow: 0 -32px 80px rgba(24, 20, 16, .10);
+    }
+    .content-section { padding: clamp(72px, 9vw, 132px) clamp(20px, 6vw, 96px); }
+    .content-section:nth-child(even) { background: #f7f4ef; }
+    .section-inner { width: min(1180px, 100%); margin: 0 auto; }
+    .kicker { margin: 0 0 12px; color: #c40000; font: 800 .78rem/1.2 system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    .section-title { max-width: 780px; margin: 0; font: 750 clamp(2.2rem, 5vw, 4.4rem)/1.02 system-ui, sans-serif; letter-spacing: -.045em; }
+    .lead { max-width: 760px; margin: 24px 0 0; color: #605d58; font: 400 clamp(1.05rem, 1.5vw, 1.25rem)/1.7 system-ui, sans-serif; }
+    .about-grid { display: grid; grid-template-columns: minmax(220px, .68fr) 1.5fr; gap: clamp(36px, 7vw, 90px); align-items: center; }
+    .about-logo { width: min(330px, 80vw); height: auto; filter: drop-shadow(0 20px 28px rgba(0,0,0,.13)); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .pill { padding: 9px 14px; border-radius: 999px; border: 1px solid #ddd6cc; background: #fff; color: #4c4945; font: 700 .85rem/1 system-ui, sans-serif; }
+    .course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
+    .course-card { overflow: hidden; border: 1px solid #e6dfd6; border-radius: 24px; background: #fff; box-shadow: 0 18px 55px rgba(35, 29, 23, .07); }
+    .course-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .course-card__body { padding: 24px 24px 28px; }
+    .course-card h3 { margin: 0; font: 750 clamp(1.35rem, 2.2vw, 1.9rem)/1.15 system-ui, sans-serif; }
+    .course-card p { margin: 12px 0 0; color: #68645f; font: 400 1rem/1.6 system-ui, sans-serif; }
+    .course-card a, .text-link { display: inline-flex; margin-top: 18px; color: #b70000; font: 750 .95rem/1.2 system-ui, sans-serif; text-decoration: none; }
+    .course-card a:hover, .text-link:hover { text-decoration: underline; }
+    .action-panel { display: grid; grid-template-columns: 1.1fr .9fr; overflow: hidden; border-radius: 28px; background: #171717; color: #fff; }
+    .action-panel__copy { padding: clamp(36px, 6vw, 74px); align-self: center; }
+    .action-panel__copy .kicker { color: #ff5353; }
+    .action-panel__copy p { color: #d5d1cc; }
+    .action-panel img { width: 100%; height: 100%; min-height: 430px; object-fit: cover; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: #d40000; color: #fff; font: 750 .95rem/1 system-ui, sans-serif; text-decoration: none; }
+    .button--light { background: #fff; color: #171717; }
+    .insight-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+    .insight-card { padding: 28px; border-radius: 20px; border: 1px solid #e3dbd1; background: #fff; }
+    .insight-card span { color: #b70000; font: 800 .72rem/1 system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .insight-card h3 { margin: 16px 0 0; font: 750 1.35rem/1.25 system-ui, sans-serif; }
+    .insight-card p { margin: 12px 0 0; color: #68645f; font: 400 .96rem/1.6 system-ui, sans-serif; }
+    .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; margin-top: 42px; }
+    .contact-card { padding: clamp(28px, 4vw, 44px); border-radius: 24px; background: #171717; color: #fff; }
+    .contact-card h3 { margin: 0 0 24px; font: 750 1.5rem/1.2 system-ui, sans-serif; }
+    .contact-card p, .contact-card a { color: #e4e0da; font: 400 1rem/1.7 system-ui, sans-serif; }
+    .contact-card a { display: block; margin-top: 8px; text-decoration: none; }
+    .contact-card a:hover { color: #fff; text-decoration: underline; }
+    .site-footer { padding: 26px clamp(20px, 6vw, 96px); background: #0d0d0d; color: #aaa; text-align: center; font: 400 .84rem/1.5 system-ui, sans-serif; }
+    @media (max-width: 800px) {
+      .about-grid, .action-panel, .contact-grid { grid-template-columns: 1fr; }
+      .course-grid, .insight-grid { grid-template-columns: 1fr; }
+      .about-logo { width: 210px; }
+      .action-panel img { min-height: 300px; order: -1; }
+    }
   </style>
 </head>
-<body style="background: #FFFFFF;">
+<body>
   <div id="top"></div>
   <div id="world"></div>
+
+  <main class="site-content">
+    <section class="content-section" id="about">
+      <div class="section-inner about-grid">
+        <img class="about-logo" src="assets/cha-logo.png" alt="The Canadian Health Academy logo" />
+        <div>
+          <p class="kicker">About us</p>
+          <h2 class="section-title">Practical education for confident wellness professionals.</h2>
+          <p class="lead">The Canadian Health Academy provides hands-on holistic wellness training designed to help practitioners expand their knowledge, refine their techniques, and serve clients with care.</p>
+          <div class="pill-row" aria-label="Academy qualities">
+            <span class="pill">Hands-on learning</span>
+            <span class="pill">Professional instruction</span>
+            <span class="pill">Continuing education</span>
+          </div>
+          <a class="text-link" href="https://thecanadianhealthacademy.com/about-us/">Learn more about the academy →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="courses">
+      <div class="section-inner">
+        <p class="kicker">Featured courses</p>
+        <h2 class="section-title">Build new skills through focused, hands-on training.</h2>
+        <p class="lead">Explore practical modalities taught in a supportive professional environment.</p>
+        <div class="course-grid">
+          <article class="course-card">
+            <img src="assets/manual-lymphatic-drainage.webp" alt="Instructor demonstrating Manual Lymphatic Drainage to adult students" loading="lazy" />
+            <div class="course-card__body"><h3>Manual Lymphatic Drainage</h3><p>Learn gentle, precise techniques with an emphasis on professional practice and client comfort.</p><a href="https://thecanadianhealthacademy.com/courses/">View course details →</a></div>
+          </article>
+          <article class="course-card">
+            <img src="assets/dry-cupping.webp" alt="Instructor demonstrating dry cupping on a client's shoulder" loading="lazy" />
+            <div class="course-card__body"><h3>Dry Cupping</h3><p>Develop safe application, placement, and client-communication skills through guided practice.</p><a href="https://thecanadianhealthacademy.com/courses/">View course details →</a></div>
+          </article>
+          <article class="course-card">
+            <img src="assets/hot-stone-massage.webp" alt="Instructor demonstrating hot stone massage placement" loading="lazy" />
+            <div class="course-card__body"><h3>Hot Stone Therapy</h3><p>Practice stone preparation, temperature awareness, and thoughtful integration into massage sessions.</p><a href="https://thecanadianhealthacademy.com/courses/">View course details →</a></div>
+          </article>
+          <article class="course-card">
+            <img src="assets/gua-sha.webp" alt="Instructor demonstrating a facial Gua Sha technique" loading="lazy" />
+            <div class="course-card__body"><h3>Gua Sha &amp; IASTM</h3><p>Understand tool handling, angles, pressure, and client care in a structured learning setting.</p><a href="https://thecanadianhealthacademy.com/courses/">View course details →</a></div>
+          </article>
+          <article class="course-card">
+            <img src="assets/indian-head-massage.webp" alt="Instructor demonstrating head massage to adult students" loading="lazy" />
+            <div class="course-card__body"><h3>Indie Head Massage</h3><p>Learn seated head-massage techniques designed for a calm, professional client experience.</p><a href="https://thecanadianhealthacademy.com/courses/">View course details →</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="registration-details">
+      <div class="section-inner action-panel">
+        <div class="action-panel__copy">
+          <p class="kicker">Registration</p>
+          <h2 class="section-title">Ready to add a new modality to your practice?</h2>
+          <p class="lead">Review course availability, choose your training, and reserve your place in an upcoming class.</p>
+          <div class="button-row">
+            <a class="button" href="https://thecanadianhealthacademy.com/registration/">Register now</a>
+            <a class="button button--light" href="https://thecanadianhealthacademy.com/courses/">Browse all courses</a>
+          </div>
+        </div>
+        <img src="assets/registration.webp" alt="Admissions advisor speaking with prospective adult students" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="content-section" id="blog">
+      <div class="section-inner">
+        <p class="kicker">Learning resources</p>
+        <h2 class="section-title">Continue learning beyond the classroom.</h2>
+        <div class="insight-grid">
+          <article class="insight-card"><span>Course guide</span><h3>What to expect from hands-on wellness training</h3><p>How demonstration, supervised practice, and feedback work together.</p></article>
+          <article class="insight-card"><span>Professional practice</span><h3>Creating a calm and respectful client experience</h3><p>Practical habits that support communication, comfort, and confidence.</p></article>
+          <article class="insight-card"><span>Continuing education</span><h3>Choosing the next modality for your practice</h3><p>Questions to consider when planning your professional development.</p></article>
+        </div>
+        <a class="text-link" href="https://thecanadianhealthacademy.blogspot.com/">Visit the academy blog →</a>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="section-inner">
+        <p class="kicker">Contact us</p>
+        <h2 class="section-title">Questions about a course? We’re here to help.</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Get in touch</h3>
+            <a href="mailto:info@thecanadianhealthacademy.com">info@thecanadianhealthacademy.com</a>
+            <a href="tel:+16472399952">+1 647 239 9952</a>
+            <p>1425 Dundas Street East<br />Mississauga, Ontario L4X 2W4</p>
+          </div>
+          <div class="contact-card">
+            <h3>Start a conversation</h3>
+            <p>Tell the admissions team which course interests you and what you hope to add to your professional practice.</p>
+            <div class="button-row"><a class="button" href="https://thecanadianhealthacademy.com/contact-us/">Contact the academy</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">© The Canadian Health Academy Inc. · Professional holistic wellness education in Ontario.</footer>
 
   <script src="scrub-engine.js"></script>
   <script>
     mountScrollWorld(document.getElementById('world'), {
-      brand: { name: 'The Canadian Health Academy', href: '#top' },
-      cta: { label: 'Enroll Today', href: '#hero' },
-      hint: 'scroll to fly in',
-      diveScroll: 1.3,
-      connScroll: 0.9,
+      brand: {
+        name: 'The Canadian Health Academy',
+        href: '#top',
+        logo: 'assets/cha-logo.png',
+        logoAlt: 'The Canadian Health Academy'
+      },
+      navItems: [
+        { label: 'About Us', href: '#about' },
+        { label: 'Courses', href: '#courses' },
+        { label: 'Registration', href: '#registration-details' },
+        { label: 'Blogs', href: '#blog' },
+        { label: 'Contact Us', href: '#contact' }
+      ],
+      cta: { label: 'Register', href: '#registration-details' },
+      hint: 'scroll to explore courses',
+      diveScroll: 1.35,
+      atmosphere: false,
       sections: [
         {
-          id: 'entrance', label: 'Entrance',
-          still: 'assets/entrance.webp',
-          clip: 'assets/vid/entrance.mp4',
-          accent: '#004A99',
-          eyebrow: 'WELCOME TO THE FUTURE',
-          title: 'Elevate Your Medical Career.',
-          body: 'Start your journey at Canada\'s premier healthcare training center.',
-          tags: ['Accredited', 'National Standard'],
+          id: 'academy', label: 'Academy',
+          still: 'assets/academy-hero.webp',
+          accent: '#d40000',
+          eyebrow: 'Holistic wellness education',
+          title: 'Learn by doing. Grow with confidence.',
+          body: 'Hands-on certification and continuing education for wellness professionals in Ontario.',
+          tags: ['Practical training', 'Adult education'],
+          cta: { primary: { label: 'Explore courses', href: '#courses' }, secondary: { label: 'About the academy', href: '#about' } }
         },
         {
-          id: 'simlab', label: 'Sim Lab',
-          still: 'assets/simlab.webp',
-          clip: 'assets/vid/simlab.mp4',
-          accent: '#007BFF',
-          eyebrow: 'HANDS-ON MASTERY',
-          title: 'Train in High-Fidelity Labs.',
-          body: 'Master complex procedures in a risk-free, state-of-the-art environment.',
-          tags: ['Sim-Tech', 'Expert Guidance'],
+          id: 'lymphatic', label: 'MLD',
+          still: 'assets/manual-lymphatic-drainage.webp',
+          accent: '#b70000',
+          eyebrow: 'Gentle, precise technique',
+          title: 'Manual Lymphatic Drainage.',
+          body: 'Develop thoughtful hand movements, sequencing, and client-care skills through guided practice.',
+          tags: ['Hands-on', 'Professional development']
         },
         {
-          id: 'hybrid', label: 'Learning',
-          still: 'assets/hybrid.webp',
-          clip: 'assets/vid/hybrid.mp4',
-          accent: '#00C2CB',
-          eyebrow: 'MODERN LEARNING',
-          title: 'Hybrid Education for All.',
-          body: 'Flexible learning that combines digital innovation with human expertise.',
-          tags: ['Flexible', 'Interactive'],
+          id: 'cupping', label: 'Cupping',
+          still: 'assets/dry-cupping.webp',
+          accent: '#d40000',
+          eyebrow: 'Technique and safe application',
+          title: 'Dry Cupping.',
+          body: 'Learn equipment handling, placement, session planning, and professional communication.',
+          tags: ['Demonstration', 'Supervised practice']
         },
         {
-          id: 'clinical', label: 'Clinical',
-          still: 'assets/clinical.webp',
-          clip: 'assets/vid/clinical.mp4',
-          accent: '#E0F2F1',
-          eyebrow: 'REAL-WORLD IMPACT',
-          title: 'Clinical Excellence in Practice.',
-          body: 'Transition from theory to practice in our partnered healthcare facilities.',
-          tags: ['Clinical Rotations', 'Certified'],
+          id: 'hot-stone', label: 'Hot Stone',
+          still: 'assets/hot-stone-massage.webp',
+          accent: '#7e1919',
+          eyebrow: 'Warmth, flow, and preparation',
+          title: 'Hot Stone Therapy.',
+          body: 'Practice stone preparation, temperature awareness, and considered massage integration.',
+          tags: ['Massage modality', 'Client comfort']
         },
         {
-          id: 'graduation', label: 'Graduation',
-          still: 'assets/graduation.webp',
-          clip: 'assets/vid/graduation.mp4',
-          accent: '#FFD700',
-          eyebrow: 'THE PAYOFF',
-          title: 'Join the Elite Ranks.',
-          body: 'Graduate with the confidence and credentials to lead in healthcare.',
-          tags: ['Certified Pro', 'Career Ready'],
+          id: 'gua-sha', label: 'Gua Sha',
+          still: 'assets/gua-sha.webp',
+          accent: '#a33a2d',
+          eyebrow: 'Tool handling and pressure',
+          title: 'Gua Sha & IASTM.',
+          body: 'Explore thoughtful tool angles, movements, pressure, and a respectful client experience.',
+          tags: ['Practical skills', 'Guided feedback']
         },
         {
-          id: 'hero', label: 'Enroll',
-          still: 'assets/hero.webp',
-          clip: 'assets/vid/hero.mp4',
-          accent: '#FFD700',
-          eyebrow: 'YOUR FUTURE STARTS HERE',
-          title: 'Begin Your Legacy Today.',
-          body: 'Enrollment is now open for the next academic session.',
-          tags: ['Limited Seats', 'Apply Now'],
-          cta: { 
-            primary: { label: 'Enroll Now', href: '#' },
-            secondary: { label: 'View Courses', href: '#' } 
-          },
+          id: 'head-massage', label: 'Head Massage',
+          still: 'assets/indian-head-massage.webp',
+          accent: '#a4161a',
+          eyebrow: 'Seated wellness technique',
+          title: 'Indie Head Massage.',
+          body: 'Build a calm, structured sequence of scalp, temple, neck, and shoulder techniques.',
+          tags: ['Fully clothed', 'Versatile modality']
         },
+        {
+          id: 'registration', label: 'Register',
+          still: 'assets/registration.webp',
+          accent: '#d40000',
+          eyebrow: 'Choose your next course',
+          title: 'Take the next step in your practice.',
+          body: 'Explore upcoming training and reserve your place with The Canadian Health Academy.',
+          tags: ['Course options', 'Admissions support'],
+          cta: {
+            primary: { label: 'Register now', href: 'https://thecanadianhealthacademy.com/registration/' },
+            secondary: { label: 'Contact us', href: '#contact' }
+          }
+        }
       ],
-      connectors: [
-        'assets/vid/conn1.mp4',
-        'assets/vid/conn2.mp4',
-        'assets/vid/conn3.mp4',
-        'assets/vid/conn4.mp4',
-        'assets/vid/conn5.mp4',
-      ],
+      connectors: []
     });
   </script>
 </body>

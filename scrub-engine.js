@@ -115,11 +115,26 @@ function mountScrollWorld(container, config) {
   const topbar = el('div', 'sw-topbar');
   if (config.brand) {
     const brand = el('a', 'sw-brand'); brand.href = (config.brand.href || '#');
-    brand.appendChild(el('span', 'sw-brand__mark'));
+    if (config.brand.logo) {
+      const logo = el('img', 'sw-brand__logo');
+      logo.src = config.brand.logo;
+      logo.alt = config.brand.logoAlt || '';
+      brand.appendChild(logo);
+    } else {
+      brand.appendChild(el('span', 'sw-brand__mark'));
+    }
     const nm = el('span', 'sw-brand__name'); nm.textContent = config.brand.name || ''; brand.appendChild(nm);
     topbar.appendChild(brand);
   }
   const nav = el('nav', 'sw-nav'); if (config.nav !== false) topbar.appendChild(nav);
+  if (config.nav !== false && config.navItems && config.navItems.length) {
+    config.navItems.forEach(item => {
+      const a = el('a', 'sw-nav__item');
+      a.href = item.href || '#';
+      a.textContent = item.label || '';
+      nav.appendChild(a);
+    });
+  }
   if (config.cta && config.cta.label) {
     const c = el('a', 'sw-topcta'); c.href = config.cta.href || '#'; c.textContent = config.cta.label;
     topbar.appendChild(c);
@@ -163,8 +178,9 @@ function mountScrollWorld(container, config) {
     dot.innerHTML = `<span class="sw-route__label">${esc(s.label || '')}</span><i></i>`;
     dot.addEventListener('click', () => jumpTo(i)); route.appendChild(dot); dots.push(dot);
 
-    if (config.nav !== false) {
+    if (config.nav !== false && !(config.navItems && config.navItems.length)) {
       const b = el('button', 'sw-nav__item'); b.textContent = s.label || '';
+      b.dataset.sectionIndex = i;
       b.addEventListener('click', () => jumpTo(i)); nav.appendChild(b);
     }
   });
@@ -261,7 +277,9 @@ function mountScrollWorld(container, config) {
     if (near !== activeIndex) {
       activeIndex = near;
       dots.forEach((d, k) => d.classList.toggle('is-active', k === near));
-      nav.querySelectorAll('.sw-nav__item').forEach((n, k) => n.classList.toggle('is-active', k === near));
+      nav.querySelectorAll('[data-section-index]').forEach(n => {
+        n.classList.toggle('is-active', Number(n.dataset.sectionIndex) === near);
+      });
       container.style.setProperty('--sw-accent', SECTIONS[near].accent || '');
     }
     scrollbarFill.style.transform = `scaleX(${clamp(y / (totalW * vh))})`;
@@ -375,9 +393,10 @@ function injectCSS() {
   .sw-topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(14px,2.4vw,26px) clamp(18px,5vw,64px);}
   .sw-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--sw-ink);}
   .sw-brand__mark{width:24px;height:28px;border-radius:7px 7px 10px 10px;background:linear-gradient(160deg,var(--sw-accent),color-mix(in srgb,var(--sw-accent) 60%,#000));box-shadow:0 6px 14px color-mix(in srgb,var(--sw-accent) 40%,transparent);}
+  .sw-brand__logo{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 5px 10px rgba(0,0,0,.12));}
   .sw-brand__name{font-family:var(--sw-font-display);font-weight:700;font-size:1.1rem;}
   .sw-nav{display:flex;gap:4px;padding:5px;background:color-mix(in srgb,#fff 55%,transparent);backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--sw-accent) 16%,transparent);border-radius:999px;}
-  .sw-nav__item{font:inherit;font-size:.82rem;color:var(--sw-ink-soft);border:0;background:transparent;cursor:pointer;padding:7px 14px;border-radius:999px;transition:color .25s,background .25s;}
+  .sw-nav__item{font:inherit;font-size:.82rem;color:var(--sw-ink-soft);border:0;background:transparent;cursor:pointer;padding:7px 14px;border-radius:999px;transition:color .25s,background .25s;text-decoration:none;}
   .sw-nav__item:hover{color:var(--sw-ink);} .sw-nav__item.is-active{color:#fff;background:var(--sw-accent);}
   .sw-topcta{text-decoration:none;font-weight:600;font-size:.9rem;color:#fff;background:var(--sw-ink);padding:10px 20px;border-radius:999px;white-space:nowrap;}
   .sw-stage{position:fixed;inset:0;z-index:10;pointer-events:none;}
@@ -412,13 +431,19 @@ function injectCSS() {
   .sw-track{position:relative;z-index:1;width:100%;pointer-events:none;}
   @media (max-width:860px){
     .sw-nav{display:none;}
+    .sw-topcta{display:none;}
+    .sw-topbar{padding:14px 18px;}
+    .sw-brand__logo{width:42px;height:42px;}
+    .sw-brand__name{max-width:170px;font-size:.9rem;line-height:1.1;}
     .sw-copylayer::before{width:100%;height:60%;top:auto;bottom:0;background:linear-gradient(0deg,var(--sw-bg) 8%,color-mix(in srgb,var(--sw-bg) 70%,transparent) 46%,transparent 100%);}
     /* Anchor copy to the bottom, clear of the home indicator / collapsing URL bar.
        dvh + env() are progressive: browsers that lack them keep the vh fallback line. */
-    .sw-copy{left:clamp(18px,5vw,64px);right:clamp(18px,5vw,64px);top:auto;bottom:clamp(64px,14vh,120px);transform:none;width:auto;max-width:560px;}
+    .sw-copy{left:20px;right:52px;top:auto;bottom:clamp(64px,14vh,120px);transform:none;width:auto;max-width:560px;}
     .sw-copy{bottom:calc(clamp(56px,12dvh,110px) + env(safe-area-inset-bottom));}
-    .sw-copy__title{font-size:clamp(1.9rem,7.5vw,2.7rem);}
+    .sw-copy__title{max-width:100%;font-size:clamp(1.78rem,7.4vw,2.35rem);overflow-wrap:anywhere;}
     .sw-copy__body{max-width:none;font-size:clamp(.98rem,3.6vw,1.1rem);} .sw-scene__video,.sw-scene__still{object-position:center 46%;}
+    .sw-copy__cta{gap:8px;margin-top:22px;}
+    .sw-btn{padding:12px 17px;font-size:.86rem;}
     .sw-hint{bottom:calc(20px + env(safe-area-inset-bottom));}
     .sw-route{gap:16px;right:6px;} .sw-route__label{display:none;}
   }
