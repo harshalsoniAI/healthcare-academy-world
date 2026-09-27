@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Canadian Health Academy — Experience the Future of Learning</title>
+  <meta name="description" content="Fly through the immersive world of The Canadian Health Academy." />
+  <style>
+    :root, .sw-root {
+      --sw-bg: #FFFFFF;          /* Match generated scene background */
+      --sw-ink: #004A99;         /* Deep Trust Blue */
+      --sw-ink-soft: #B0BEC5;   /* Professional Slate */
+      --sw-accent: #004A99;      /* Primary Accent */
+    }
+    body { margin: 0; }
+  </style>
+</head>
+<body style="background: #FFFFFF;">
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'The Canadian Health Academy', href: '#top' },
+      cta: { label: 'Enroll Today', href: '#hero' },
+      hint: 'scroll to fly in',
+      diveScroll: 1.3,
+      connScroll: 0.9,
+      sections: [
+        {
+          id: 'entrance', label: 'Entrance',
+          still: 'assets/entrance.webp',
+          clip: 'assets/vid/entrance.mp4',
+          accent: '#004A99',
+          eyebrow: 'WELCOME TO THE FUTURE',
+          title: 'Elevate Your Medical Career.',
+          body: 'Start your journey at Canada\'s premier healthcare training center.',
+          tags: ['Accredited', 'National Standard'],
+        },
+        {
+          id: 'simlab', label: 'Sim Lab',
+          still: 'assets/simlab.webp',
+          clip: 'assets/vid/simlab.mp4',
+          accent: '#007BFF',
+          eyebrow: 'HANDS-ON MASTERY',
+          title: 'Train in High-Fidelity Labs.',
+          body: 'Master complex procedures in a risk-free, state-of-the-art environment.',
+          tags: ['Sim-Tech', 'Expert Guidance'],
+        },
+        {
+          id: 'hybrid', label: 'Learning',
+          still: 'assets/hybrid.webp',
+          clip: 'assets/vid/hybrid.mp4',
+          accent: '#00C2CB',
+          eyebrow: 'MODERN LEARNING',
+          title: 'Hybrid Education for All.',
+          body: 'Flexible learning that combines digital innovation with human expertise.',
+          tags: ['Flexible', 'Interactive'],
+        },
+        {
+          id: 'clinical', label: 'Clinical',
+          still: 'assets/clinical.webp',
+          clip: 'assets/vid/clinical.mp4',
+          accent: '#E0F2F1',
+          eyebrow: 'REAL-WORLD IMPACT',
+          title: 'Clinical Excellence in Practice.',
+          body: 'Transition from theory to practice in our partnered healthcare facilities.',
+          tags: ['Clinical Rotations', 'Certified'],
+        },
+        {
+          id: 'graduation', label: 'Graduation',
+          still: 'assets/graduation.webp',
+          clip: 'assets/vid/graduation.mp4',
+          accent: '#FFD700',
+          eyebrow: 'THE PAYOFF',
+          title: 'Join the Elite Ranks.',
+          body: 'Graduate with the confidence and credentials to lead in healthcare.',
+          tags: ['Certified Pro', 'Career Ready'],
+        },
+        {
+          id: 'hero', label: 'Enroll',
+          still: 'assets/hero.webp',
+          clip: 'assets/vid/hero.mp4',
+          accent: '#FFD700',
+          eyebrow: 'YOUR FUTURE STARTS HERE',
+          title: 'Begin Your Legacy Today.',
+          body: 'Enrollment is now open for the next academic session.',
+          tags: ['Limited Seats', 'Apply Now'],
+          cta: { 
+            primary: { label: 'Enroll Now', href: '#' },
+            secondary: { label: 'View Courses', href: '#' } 
+          },
+        },
+      ],
+      connectors: [
+        'assets/vid/conn1.mp4',
+        'assets/vid/conn2.mp4',
+        'assets/vid/conn3.mp4',
+        'assets/vid/conn4.mp4',
+        'assets/vid/conn5.mp4',
+      ],
+    });
+  </script>
+</body>
+</html>
